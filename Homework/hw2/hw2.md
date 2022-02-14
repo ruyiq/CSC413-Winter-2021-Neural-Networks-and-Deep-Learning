@@ -167,5 +167,30 @@ $$ \begin{align*}
 Therefore, setting $\tilde \lambda = 0$ will do the job.
 ### 3. Convolutional Neural Networks
 #### 3.1 Convolutional Filters
+$$I*J = \begin{bmatrix}
+    0 & 1 & 2 & 3 & 2 \\
+    2 & 3 & 3 & 2 & 1 \\
+    1 & 1 & 1 & -1 & -1 \\
+    -2 & -2 & -2 & -1 & -1 \\
+    -1 & -2 & -3 & -2 & -1 \\
+    \end{bmatrix}
+$$
+This convolutional filter detect edges of the input image. 
 #### 3.2 Size of Conv Nets
+- For CNN Architecture: 
+  - Number of parameters = $10 + 0 + 10 + 0 + 10 = 30$
+  - Number of neurons = $32 \times 32 +  32 \times 32 + 16 \times 16 + 16 \times 16 + 8 \times 8 + 8 \times 8 = 2688$
+- For FCNN Architecture: 
+ 
+  -  Number of parameters = $ [(32 \times 32 +1) \times (32 \times 32)] + [(16 \times 16 +1) \times (16 \times 16)] + [(8 \times 8 +1) \times (8 \times 8)] = 1119552$
+  -  Number of neurons = $32 \times 32 +  32 \times 32 + 16 \times 16 + 16 \times 16 + 8 \times 8 + 8 \times 8 = 2688$
+  
+  **note: according to piazza @419, input and output size are the same for FC.*
 #### 3.3 Receptive Fields
+$$\begin{align*}
+R_3 &= 1 + \sum_{j=1}^{3} (F_j-1)\prod_{i = 1}^{j-1} S_{i} \quad \\
+&= 1 + (F_1-1)S_0 +(F_2-1)S_0S_1+(F_3-1)S_0S_1S_2 \\
+&= 1 + (5-1)*1 +(2-1)*1*2+(5-1)*1*2*1 \\
+&= 1+4+2+8 \\
+&= 15
+ \end{align*}$$
