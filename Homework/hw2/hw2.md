@@ -47,6 +47,7 @@ a &= (\mathbf{X}\mathbf{X}^T)^{-1}t  && \text{Since  when $n>d$, $XX^T$ is inver
 Let $d>n$.
 Assume the RMSProp optimizer converges to a solution. 
 As hinted, let $x_1= [2,1]$, $w_0=[0,0]$, $t=[2]$.
+As clarified in piazza @503, $x_1$ is a row in the data matrix $X$ and $w_0 $ is a column vector.
 
 $$\begin{align*} 
 w^* &= \mathbf{X}^T(\mathbf{X}\mathbf{X}^T)^{-1}t \\
@@ -59,6 +60,7 @@ Thus, the minimum norm solution is $\frac{2}{5}x_1$.
 For the RMSProp optimizer: 
 
 $$\begin{align*} \triangledown_{w} L 
+&= \frac{2}{n}x_1(x_1^Tw-t)\\
 &= \frac{2}{n} (x_1x_1^Tw-x_1t) \\
 &= \frac{2}{n} \left[\begin{pmatrix}2\\1\end{pmatrix}\begin{pmatrix}2&1\end{pmatrix}w - \begin{pmatrix}2\\ 1\end{pmatrix}t\right] \\
 &= \frac{2}{n}\left[\begin{pmatrix}4&2\\ 2&1\end{pmatrix}w-\begin{pmatrix}2\\ 1\end{pmatrix}t\right] \\
@@ -67,6 +69,8 @@ $$\begin{align*} \triangledown_{w} L
  \end{align*} $$
 
 Let $n=1$. Then, we have $\triangledown_{w} L=\left[\begin{pmatrix}8&4\\ 4&2\end{pmatrix}w- 4 x_1\right]$
+
+Then, we need to check whether it converges to the minimum norm solution. Inspired by piazza @460, I decided to write some code to see what the RMSProp converges to.
 ### 2. Gradient-based Hyper-parameter Optimization
 #### 2.1 Computation Graph
 ##### 2.1.1 
