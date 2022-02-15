@@ -186,6 +186,8 @@ This convolutional filter detect edges of the input image.
   -  Number of neurons = $32 \times 32 +  32 \times 32 + 16 \times 16 + 16 \times 16 + 8 \times 8 + 8 \times 8 = 2688$
   
   **note: according to piazza @419, input and output size are the same for FC.*
+
+More trainable parameters tells us that this model requires more space compared to the other model, i.e. more trainable parameters lead to higher computational complexity.
 #### 3.3 Receptive Fields
 $$\begin{align*}
 R_3 &= 1 + \sum_{j=1}^{3} (F_j-1)\prod_{i = 1}^{j-1} S_{i} \quad \\
@@ -194,3 +196,7 @@ R_3 &= 1 + \sum_{j=1}^{3} (F_j-1)\prod_{i = 1}^{j-1} S_{i} \quad \\
 &= 1+4+2+8 \\
 &= 15
  \end{align*}$$
+
+Therefore, the receptive field afterthe second convolutional layer is of size $15 \times 15$.
+
+Besides changing the size of the filter/kernel, changing the number of pooling layers or changing the number of convolutional layers can both lead to change in the size of the receptive field of a neuron. 
